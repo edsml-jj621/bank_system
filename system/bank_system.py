@@ -35,7 +35,7 @@ class bankSystem():
         currency = input("Please input the currency(HKD/USD/SGD): ")
         # load into the bank system dataframe
         self.df.loc[account] = [name, password, balance, currency]
-        print('Account Created Successfully')
+        print('Account Created Successfully! Your account number is', account)
 
     def checkPassword(self):
         """This function checks the password when users try to access
@@ -200,9 +200,9 @@ class bankSystem():
             print("No Account Found")
 
     def checkWithdraw(self, user):
-        """To check whether a single client do more than 5 withdrawals of
-        any currency in the last 5 mins. Return false if it exceeds 5
-        times, otherwise returns true.
+        """To check whether a single client do more than 5 withdrawals,
+        limit to be reset every 5 minutes of last withdrawal. Return false
+        if it exceeds 5 times, otherwise returns true.
 
         Parameters
         ----------
@@ -216,15 +216,23 @@ class bankSystem():
         True or False: boolean
             the result of the checks
         """
-        # define the time 5 mins before
-        earlyDate = (datetime.datetime.now() -
-                     timedelta(minutes=5)).strftime(timeFormat)
-        # count the num of withdrawals
-        count = self.ts.loc[(self.ts['Operation'] == 'Withdrawal')
-                            & (self.ts['Name'] == user)
-                            & (self.ts['Date'] > earlyDate)].shape[0]
-        if count >= 5:
-            print('More than 5 withdrawals in 5 mins')
+        # time 5 mins earlier
+        earlyDate = datetime.datetime.now() - timedelta(minutes=5)
+        # last 5 withdrawal of the user
+        lastFivew = self.ts.loc[(self.ts['Operation'] == 'Withdrawal') & (
+            self.ts['Name'] == user), 'Date'].values[-5:]
+        # def hte counter
+        counter = 1
+        for i in range(4):
+            # check whether limit is reset
+            time_break = datetime.datetime.strptime(
+                lastFivew[i+1], timeFormat) - datetime.datetime.strptime(
+                    lastFivew[i], timeFormat)
+            if(time_break < timedelta(minutes=5)):
+                counter += 1
+        # if limit not reset and exceeds 5 times, return false
+        lastDatew = datetime.datetime.strptime(lastFivew[-1], timeFormat)
+        if (counter == 5) & (earlyDate < lastDatew):
             return False
         else:
             return True
@@ -267,7 +275,7 @@ def main():
     dataFrame = pd.read_csv('system.csv', dtype=str, index_col=0)
     dataFrame['balance'] = dataFrame['balance'].astype(float)
     # load the operations record in the bank system
-    tranState = pd.read_csv('record.csv', index_col=0)
+    tranState = pd.read_csv('record.csv', dtype=str, index_col=0)
     # create the system operator
     systemOper = bankSystem(dataFrame, tranState)
     # enter the main menu
