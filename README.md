@@ -10,7 +10,7 @@ is expected to handle account creation, deposit, withdrawal and transfer.
 To install you can clone the repository to local
 ```git clone https://github.com/edsml-jj621/bank_system.git```
 
-Then create the environment by running
+Then in the root of the repository, create the environment by running
 ```conda env create -f environment.yml```
 
 After you create the environment, please activate it:
@@ -231,5 +231,49 @@ Client Name: Ben
 4   05 Jun 2022 01:44:50      HKD  Withdrawal FEE   -0.1
 41  05 Jun 2022 13:04:06      HKD    Transfer Out   -100
 42  05 Jun 2022 13:04:06      HKD    Transfer FEE   -1.0
+--------------------------------------------------------
+```
+
+### Built-in account OSL_FEE and it will collect handling fee.
+```
+Please input your option: 5
+Please input your name: OSL_FEE
+---------------------------------
+             name currency  balance
+account
+10000000  OSL_FEE      HKD      0.0
+10000001  OSL_FEE      USD      0.0
+10000002  OSL_FEE      SGD      0.0
+---------------------------------
+```
+
+```
+---------------------------------------
+
+Please input your option: 4
+Please input your account: 10000003
+Please input the password: 123456
+Please input the account transfer to: 10000004
+Please input the amount to be transferred: 100
+Transfer Money Successfully
+
+
+------------OSL Bank System------------
+1. Account Creation
+2. Money Deposit
+3. Money Withdrawal
+4. Money Transfer
+5. List Bank Account Balance
+6. Display Transaction Statement
+7. Exit
+---------------------------------------
+
+Please input your option: 6
+Please input your name: OSL_FEE
+--------------------------------------------------------
+Client Name: OSL_FEE
+--------------------------------------------------------
+                   Date Currency     Operation Amount
+4  05 Jun 2022 14:17:50      HKD  Handling FEE   +1.0
 --------------------------------------------------------
 ```
