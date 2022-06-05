@@ -1,14 +1,12 @@
 name: flake8
 
+# Controls when the workflow will run on:
 on:
-   # Trigger the workflow on push or pull request,
-   # but only for the master branch
-   push:
-     branches:
-       - master
-   pull_request:
-     branches:
-       - master
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   flake8:
@@ -18,10 +16,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Set up Python 3.9
+    - name: Set up Python 3.8
       uses: actions/setup-python@v1
       with:
-        python-version: 3.9
+        python-version: 3.8
 
     - name: Install dependencies
       run: |
