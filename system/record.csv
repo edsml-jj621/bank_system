@@ -1,2 +1,7 @@
 ,Name,Date,Currency,Operation,Amount
 0,,,,,
+1,Peter,05 Jun 2022 14:17:19,HKD,Deposit,+200
+2,Peter,05 Jun 2022 14:17:50,HKD,Transfer Out,-100
+3,Peter,05 Jun 2022 14:17:50,HKD,Transfer FEE,-1.0
+4,OSL_FEE,05 Jun 2022 14:17:50,HKD,Handling FEE,+1.0
+5,Ben,05 Jun 2022 14:17:50,HKD,Transfer In,+100
