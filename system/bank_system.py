@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 import datetime
 from datetime import timedelta
 timeFormat = '%d %b %Y %H:%M:%S'
