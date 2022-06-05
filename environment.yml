@@ -1,0 +1,12 @@
+name: bank_system
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python>=3.6
+  - pip
+  - flake8
+  - pandas
+  - numpy
+  - ipython
+  - jupyter

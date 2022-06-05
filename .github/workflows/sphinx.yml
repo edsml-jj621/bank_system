@@ -1,0 +1,50 @@
+# Taken from the MPM module
+name: sphinx_rush
+
+# Controls when the workflow will run on:
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  create_pdf_html:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install sphinx
+        
+    - name: Create html files
+      run: |
+        sphinx-build -b html docs docs/html
+        
+    - name: html to pdf
+      uses: fifsky/html-to-pdf-action@master
+      with:
+        htmlFile: ./docs/html/index.html
+        outputFile: ./docs/rush_sphinx_doc.pdf
+
+    - name: commits changes to github
+      run: |
+        git config --global user.email "jj621@imperial.ac.uk"
+        git config --global user.name "edsml-jj621"
+        git pull
+        git add ./docs/doc.pdf
+        git commit -m "Update the pdf file for Sphinx documentation"
+        git push
