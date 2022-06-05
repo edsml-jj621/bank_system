@@ -218,9 +218,13 @@ class bankSystem():
         """
         # time 5 mins earlier
         earlyDate = datetime.datetime.now() - timedelta(minutes=5)
+        # last all withdrawal of the user
+        lastallw = self.ts.loc[(self.ts['Operation'] == 'Withdrawal') & (
+            self.ts['Name'] == user), 'Date'].values
+        if len(lastallw) < 5:
+            return True
         # last 5 withdrawal of the user
-        lastFivew = self.ts.loc[(self.ts['Operation'] == 'Withdrawal') & (
-            self.ts['Name'] == user), 'Date'].values[-5:]
+        lastFivew = lastallw[-5:]
         # def hte counter
         counter = 1
         for i in range(4):

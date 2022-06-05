@@ -5,3 +5,18 @@
 3,Peter,05 Jun 2022 14:17:50,HKD,Transfer FEE,-1.0
 4,OSL_FEE,05 Jun 2022 14:17:50,HKD,Handling FEE,+1.0
 5,Ben,05 Jun 2022 14:17:50,HKD,Transfer In,+100
+6,Peter,05 Jun 2022 14:34:49,HKD,Withdrawal,-1
+7,Peter,05 Jun 2022 14:34:49,HKD,Withdrawal FEE,-0.01
+8,OSL_FEE,05 Jun 2022 14:34:49,HKD,Handling FEE,+0.01
+9,Peter,05 Jun 2022 14:35:17,HKD,Withdrawal,-2
+10,Peter,05 Jun 2022 14:35:17,HKD,Withdrawal FEE,-0.02
+11,OSL_FEE,05 Jun 2022 14:35:17,HKD,Handling FEE,+0.02
+12,Peter,05 Jun 2022 14:35:28,HKD,Withdrawal,-3
+13,Peter,05 Jun 2022 14:35:28,HKD,Withdrawal FEE,-0.03
+14,OSL_FEE,05 Jun 2022 14:35:28,HKD,Handling FEE,+0.03
+15,Peter,05 Jun 2022 14:35:35,HKD,Withdrawal,-4
+16,Peter,05 Jun 2022 14:35:35,HKD,Withdrawal FEE,-0.04
+17,OSL_FEE,05 Jun 2022 14:35:35,HKD,Handling FEE,+0.04
+18,Peter,05 Jun 2022 14:35:44,HKD,Withdrawal,-5
+19,Peter,05 Jun 2022 14:35:44,HKD,Withdrawal FEE,-0.05
+20,OSL_FEE,05 Jun 2022 14:35:44,HKD,Handling FEE,+0.05
