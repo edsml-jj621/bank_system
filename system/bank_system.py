@@ -3,8 +3,6 @@ import datetime
 from datetime import timedelta
 timeFormat = '%d %b %Y %H:%M:%S'
 
-__all__ = ['bankSystem', 'main']
-
 
 class bankSystem():
     """Some operations functions in bank systems."""
