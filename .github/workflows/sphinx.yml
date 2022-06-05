@@ -1,5 +1,4 @@
-# Taken from the MPM module
-name: sphinx_rush
+name: sphinx_pdf
 
 # Controls when the workflow will run on:
 on:
@@ -38,7 +37,7 @@ jobs:
       uses: fifsky/html-to-pdf-action@master
       with:
         htmlFile: ./docs/html/index.html
-        outputFile: ./docs/rush_sphinx_doc.pdf
+        outputFile: ./docs/doc.pdf
 
     - name: commits changes to github
       run: |
